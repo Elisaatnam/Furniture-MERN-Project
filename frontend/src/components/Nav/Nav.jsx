@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import Home from "../../pages/Home/Home.jsx";
@@ -40,3 +41,4 @@ const Nav = () => {
 }
  
 export default Nav;
+
