@@ -1,0 +1,26 @@
+.detailCard {
+  border: 1px solid black;
+  border-radius: 10px;
+  display: flex;
+  gap: 1rem;
+  position: relative;
+}
+
+.detailCard img {
+  width: 60%;
+}
+
+.buttons {
+  position: absolute;
+  bottom: 0%;
+  right: 0%;
+  display: flex;
+  gap: 1rem;
+}
+
+.buttons button {
+  border: none;
+  border-radius: 10px;
+  padding: 3px 10px;
+  cursor: pointer;
+}
