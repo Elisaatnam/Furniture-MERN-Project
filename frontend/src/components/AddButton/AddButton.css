@@ -1,0 +1,8 @@
+.addButton {
+  border: none;
+  border-radius: 10px;
+  position: absolute;
+  top: 5%;
+  right: 5%;
+  cursor: pointer;
+}

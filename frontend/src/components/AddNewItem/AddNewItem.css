@@ -1,0 +1,30 @@
+.formular-nonactive {
+  display: none;
+}
+
+.formular-active {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  z-index: 10;
+  border: 1px solid black;
+}
+
+.buttonClose {
+  border: none;
+  background-color: white;
+  cursor: pointer;
+}
+
+.formular-active input {
+  text-align: center;
+  height: 2rem;
+  width: 80%;
+}
+
+.buttonPublish {
+  border: 1px solid black;
+  border-radius: 10px;
+}
