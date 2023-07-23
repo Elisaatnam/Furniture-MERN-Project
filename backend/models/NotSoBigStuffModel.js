@@ -21,7 +21,7 @@ const notSoBigStuffSchema = new mongoose.Schema({
 	},
 });
 
-export const NotSoBigStuf = mongoose.model(
+export const NotSoBigStuff = mongoose.model(
 	"NotSoBigStuff",
 	notSoBigStuffSchema,
 );
