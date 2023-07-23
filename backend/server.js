@@ -130,12 +130,85 @@ app.post("/api/smallstuff", upload.single("image"), async (req, res) => {
 
 //! ------------ PUT ROUTES ------------------------
 //- BigStuff editieren
+app.put("/api/bigstuff/:id", async (req, res) => {
+	const { id } = req.params;
+	const editedStuff = req.body;
+
+	try {
+		const dbRes = await BigStuff.findByIdAndUpdate(id, editedStuff, {
+			new: true,
+		}); //* Wenn man ein Dokument in MongoDB mit findByIdAndUpdate aktualisierst, wird standardmäßig das Dokument vor der Aktualisierung (das Originaldokument) zurückgegeben. Indem dmannew: true als Option angibt, weist man MongoDB jedoch an, das aktualisierte Dokument zurückzugeben.
+		res.send(dbRes);
+	} catch (err) {
+		console.error(err);
+	}
+});
+
 //- NotSoBigStuff editieren
+app.put("/api/notsobigstuff/:id", async (req, res) => {
+	const { id } = req.params;
+	const editedStuff = req.body;
+
+	try {
+		const dbRes = await NotSoBigStuff.findByIdAndUpdate(id, editedStuff, {
+			new: true,
+		});
+		res.send(dbRes);
+	} catch (err) {
+		console.error(err);
+	}
+});
+
 //- SmallStuff editieren
+app.put("/api/smallstuff/:id", async (req, res) => {
+	const { id } = req.params;
+	const editedStuff = req.body;
+
+	try {
+		const dbRes = await SmallStuff.findByIdAndUpdate(id, editedStuff, {
+			new: true,
+		});
+		res.send(dbRes);
+	} catch (err) {
+		console.error(err);
+	}
+});
 
 //! ------------ DELETE ROUTES ------------------------
 //- BigStuff loeschen
+app.delete("/api/bigstuff/:id", async (req, res) => {
+	const { id } = req.params;
+	try {
+		const dbRes = await BigStuff.findByIdAndDelete(id);
+		cloudinary.uploader.destroy(dbRes.image?.imageId, err => console.log(err)); //bild aus der datenbank loeschen
+		res.send("post has been deleted");
+	} catch (err) {
+		console.error(err);
+	}
+});
+
 //- NotSoBigStuff loeschen
+app.delete("/api/notsobigstuff/:id", async (req, res) => {
+	const { id } = req.params;
+	try {
+		const dbRes = await NotSoBigStuff.findByIdAndDelete(id);
+		cloudinary.uploader.destroy(dbRes.image?.imageId, err => console.log(err));
+		res.send("post has been deleted");
+	} catch (err) {
+		console.error(err);
+	}
+});
+
 //- SmallStuff loeschen
+app.delete("/api/smallstuff/:id", async (req, res) => {
+	const { id } = req.params;
+	try {
+		const dbRes = await SmallStuff.findByIdAndDelete(id);
+		cloudinary.uploader.destroy(dbRes.image?.imageId, err => console.log(err));
+		res.send("post has been deleted");
+	} catch (err) {
+		console.error(err);
+	}
+});
 
 app.listen(PORT, () => console.log(`Server is running on: ${PORT}`));
