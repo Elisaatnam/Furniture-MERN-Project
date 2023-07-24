@@ -6,7 +6,8 @@ import Home from "./pages/Home/Home";
 import BigStuff from "./pages/BigStuff/BigStuff";
 import NotSoBigStuff from "./pages/NotSoBigStuff/NotSoBigStuff";
 import SmallStuff from "./pages/SmallStuff/SmallStuff";
-import "../../frontend/src/assets/fonts/Tektur/Tektur-VariableFont_wdth,wght.ttf"
+import Details from "./pages/Details/Details";
+import "../../frontend/src/assets/fonts/Tektur/Tektur-VariableFont_wdth,wght.ttf";
 
 function App() {
   const [refresh, setRefresh] = useState(false);
@@ -22,6 +23,7 @@ function App() {
               <Route path="/bigstuff" element={<BigStuff />} />
               <Route path="/notsobigstuff" element={<NotSoBigStuff />} />
               <Route path="/smallstuff" element={<SmallStuff />} />
+              <Route path="/:category/:id" element={<Details />} />
             </Routes>
           </BrowserRouter>
         </refreshContext.Provider>

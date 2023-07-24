@@ -1,5 +1,5 @@
 .detailCard {
-  border: 1px solid black;
+  border: 2px solid black;
   border-radius: 10px;
   display: flex;
   gap: 1rem;
@@ -8,22 +8,22 @@
   margin: 50px auto;
 }
 
-.content h2{
+.content h2 {
   font-size: 3rem;
 }
 
-.content h3{
+.content h3 {
   font-size: 1rem;
 }
-  
+
 .detailCard img {
-  width: 30%;
-  border-radius: 10px;
+  width: 60%;
+  height: 20rem;
 }
 
 .buttons {
   position: absolute;
-  top: 0; 
+  top: 0;
   right: 0;
   display: flex;
   gap: 1rem;
@@ -37,3 +37,8 @@
   cursor: pointer;
 }
 
+.detail-button {
+  position: absolute;
+  top: 260px;
+  right: 0;
+}
