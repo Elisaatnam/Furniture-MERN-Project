@@ -1,11 +1,10 @@
 import "./AddNewItem.css";
 import axios from "axios";
-import { useRef } from "react";
+import { refreshContext } from "../../context/Context";
+import { useContext } from "react";
 
 const AddNewItem = ({ formIsActive, setFormIsActive, stuffCategory }) => {
-  const titleRef = useRef();
-  const roomRef = useRef();
-  const contentRef = useRef();
+  const { refresh, setRefresh } = useContext(refreshContext);
 
   const handleFormActive = () => {
     setFormIsActive(false);
@@ -13,30 +12,25 @@ const AddNewItem = ({ formIsActive, setFormIsActive, stuffCategory }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    const newPost = {
-      title: titleRef.current.value,
-      room: roomRef.current.value,
-      content: contentRef.current.value,
-    };
-
-    const res = await axios.post(`/api/${stuffCategory}`, newPost);
-    console.log(res);
+    const formData = new FormData(e.target);
+    const res = await axios.post(`/api/${stuffCategory}`, formData);
     e.target.reset();
     setFormIsActive(false);
+    setRefresh((prev) => !prev);
   };
 
   return (
     <form
       className={formIsActive ? "formular-active" : "formular-nonactive"}
-      onClick={handleSubmit}
+      onSubmit={handleSubmit}
     >
       <button className="buttonClose" onClick={handleFormActive}>
         X
       </button>
       <h2>ADD NEW ITEM</h2>
-      <input type="text" placeholder="TITLE" ref={titleRef} />
-      <select name="room" id="room" ref={roomRef}>
+      <input type="file" placeholder="image" name="image" />
+      <input type="text" placeholder="TITLE" name="title" />
+      <select name="room" id="room">
         <option value="" disabled selected hidden>
           ROOM
         </option>
@@ -46,7 +40,7 @@ const AddNewItem = ({ formIsActive, setFormIsActive, stuffCategory }) => {
         <option value="kitchen">kitchen</option>
         <option value="bathroom">bathroom</option>
       </select>
-      <input type="text" placeholder="CONTENT" ref={contentRef} />
+      <input type="text" placeholder="CONTENT" name="content" />
       <button className="buttonPublish" type="submit">
         Publish
       </button>

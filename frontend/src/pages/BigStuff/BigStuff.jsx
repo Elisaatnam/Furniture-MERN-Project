@@ -23,7 +23,7 @@ const BigStuff = () => {
           setFormIsActive={setFormIsActive}
           stuffCategory={stuffCategory}
         />
-        <DetailCard formIsActive={formIsActive} stuffCategory={stuffCategory} />
+        <DetailCard stuffCategory={stuffCategory} />
       </main>
     </>
   );
