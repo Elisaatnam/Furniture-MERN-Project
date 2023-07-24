@@ -4,23 +4,33 @@
   display: flex;
   gap: 1rem;
   position: relative;
+  width: 80vw;
 }
 
 .detailCard img {
-  width: 60%;
+  width: 30%;
+  border-radius: 10px;
 }
 
 .buttons {
   position: absolute;
-  bottom: 0%;
-  right: 0%;
+  top: 0; 
+  right: 0;
   display: flex;
   gap: 1rem;
 }
 
 .buttons button {
+  background: none;
   border: none;
   border-radius: 10px;
   padding: 3px 10px;
   cursor: pointer;
 }
+
+.detail-button{
+  position: absolute;
+  top: 260px;
+  right: 0;
+}
+

@@ -1,11 +1,5 @@
-
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
-import Home from "../../pages/Home/Home.jsx";
-import BigStuff from "../../pages/BigStuff/BigStuff.jsx";
-import NotSoBigStuff from "../../pages/NotSoBigStuff/NotSoBigStuff.jsx";
-import SmallStuff from "../../pages/SmallStuff/SmallStuff.jsx";
-
 
 const Nav = () => {
     return ( 
@@ -33,12 +27,13 @@ const Nav = () => {
         </NavLink>
         </nav>
         
+        </>
+    );
+}
+
+export default Nav;
 
 
         
-        </>
-     );
-}
  
-export default Nav;
 
