@@ -25,7 +25,7 @@ const BigStuff = () => {
   return (
     <>
       <Nav />
-      <main>
+      <main className="pages">
         <AddButton
           formIsActive={formIsActive}
           setFormIsActive={setFormIsActive}
