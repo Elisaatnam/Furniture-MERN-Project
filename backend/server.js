@@ -72,9 +72,8 @@ app.get("/api/bigstuff/:id", async (req, res) => {
 app.get("/api/notsobigstuff/:id", async (req, res) => {
   try {
     const { id } = req.params;
-    const item = await NotSoBigStuff.find({ _id: id });
-    console.log(item);
-    res.send(item);
+    const item = await NotSoBigStuff.findOne({ _id: id });
+    res.json(item);
   } catch (err) {
     console.error(err);
   }
@@ -84,9 +83,8 @@ app.get("/api/notsobigstuff/:id", async (req, res) => {
 app.get("/api/smallstuff/:id", async (req, res) => {
   try {
     const { id } = req.params;
-    const item = await SmallStuff.find({ _id: id });
-    console.log(item);
-    res.send(item);
+    const item = await SmallStuff.findOne({ _id: id });
+    res.json(item);
   } catch (err) {
     console.error(err);
   }

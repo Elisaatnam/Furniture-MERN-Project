@@ -29,10 +29,7 @@ const BigStuff = () => {
     <>
       <Nav />
       <main className="pages">
-        <AddButton
-          formIsActive={formIsActive}
-          setFormIsActive={setFormIsActive}
-        />
+        <AddButton setFormIsActive={setFormIsActive} />
         <AddNewItem
           formIsActive={formIsActive}
           setFormIsActive={setFormIsActive}

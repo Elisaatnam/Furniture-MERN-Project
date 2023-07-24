@@ -26,7 +26,9 @@ const DetailCard = ({ elm, category }) => {
       </div>
       <div className="buttons">
         <button onClick={() => handleDelete(elm._id)}>Delete</button>
-        <Link to={`/${category}/${elm._id}`}>Details</Link>
+        <Link to={`/${category}/${elm._id}`} className="delete-button">
+          Details
+        </Link>
       </div>
     </div>
   );

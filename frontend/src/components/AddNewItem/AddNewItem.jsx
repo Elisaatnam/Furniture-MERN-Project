@@ -26,7 +26,7 @@ const AddNewItem = ({ formIsActive, setFormIsActive, category }) => {
       setLoading(true);
       setTimeout(() => {
         setLoading(false);
-      }, 3000);
+      }, 4000);
     }
   };
 
@@ -37,10 +37,13 @@ const AddNewItem = ({ formIsActive, setFormIsActive, category }) => {
       </button>
       <form onSubmit={handleSubmit}>
         <h2>ADD NEW ITEM</h2>
-        <input type="file" placeholder="image" name="image" />
-        <input type="text" placeholder="TITLE" name="title" />
+        <input
+          type="file"
+          placeholder="image"
+          name="image"
+          className="input-img"
+        />
         <select name="room" id="room">
-
           <option value="" disabled selected hidden>
             ROOM
           </option>
@@ -49,8 +52,8 @@ const AddNewItem = ({ formIsActive, setFormIsActive, category }) => {
           <option value="Workroom">Workroom</option>
           <option value="Kitchen">Kitchen</option>
           <option value="Bathroom">Bathroom</option>
-
         </select>
+        <input type="text" placeholder="TITLE" name="title" />
         <input type="text" placeholder="CONTENT" name="content" />
         <button className="buttonPublish" type="submit">
           Publish
