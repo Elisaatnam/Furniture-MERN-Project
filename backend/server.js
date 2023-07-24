@@ -38,8 +38,8 @@ app.get("/api/bigstuff", async (req, res) => {
 //- NotSoBigStuff "fetchen"
 app.get("/api/notsobigstuff", async (req, res) => {
 	try {
-		const allBigStuff = await NotSoBigStuff.find();
-		res.send(allBigStuff);
+		const allNotSoBigStuff = await NotSoBigStuff.find();
+		res.send(allNotSoBigStuff);
 	} catch (err) {
 		console.error(err);
 		res.send("There was an error fetching the Big Stuff");
@@ -48,11 +48,47 @@ app.get("/api/notsobigstuff", async (req, res) => {
 //- SmallStuff "fetchen"
 app.get("/api/smallstuff", async (req, res) => {
 	try {
-		const allBigStuff = await SmallStuff.find();
-		res.send(allBigStuff);
+		const allSmallStuff = await SmallStuff.find();
+		res.send(allSmallStuff);
 	} catch (err) {
 		console.error(err);
 		res.send("There was an error fetching the Big Stuff");
+	}
+});
+
+//- BigStuff by Id
+app.get("/api/bigstuff/:id", async (req, res) => {
+	try {
+		const { id } = req.params;
+		const item = await BigStuff.find({ _id: id });
+		console.log(item);
+		res.send(item);
+	} catch (err) {
+		console.error(err);
+	}
+});
+
+//- NotSoBigStuff by Id
+app.get("/api/notsobigstuff/:id", async (req, res) => {
+	try {
+		const { id } = req.params;
+		const item = await NotSoBigStuff.find({ _id: id });
+		console.log(item);
+		res.send(item);
+	} catch (err) {
+		console.error(err);
+	}
+});
+
+//- SmallStuff by Id
+app.get("/api/smallstuff/:id", async (req, res) => {
+	try {
+		const { id } = req.params;
+		const item = await SmallStuff.find({ _id: id });
+		console.log(item);
+		res.send(item);
+	} catch (err) {
+		console.error(err);
 	}
 });
 

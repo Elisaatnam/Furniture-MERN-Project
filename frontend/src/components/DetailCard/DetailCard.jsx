@@ -4,16 +4,16 @@ import axios from "axios";
 import { refreshContext } from "../../context/Context";
 
 const DetailCard = ({ category, elm }) => {
-  const { refresh, setRefresh } = useContext(refreshContext);
+	const { refresh, setRefresh } = useContext(refreshContext);
 
-  const handleDelete = async (stuffId) => {
-    try {
-      const { data } = await axios.delete(`/api/${category}/${stuffId}`);
-    } catch (error) {
-      console.log("handleDelete: ", error);
-    }
-    setRefresh((prev) => !prev);
-  };
+	const handleDelete = async stuffId => {
+		try {
+			const { data } = await axios.delete(`/api/${category}/${stuffId}`);
+		} catch (error) {
+			console.log("handleDelete: ", error);
+		}
+		setRefresh(prev => !prev);
+	};
 
   return (
 
@@ -45,6 +45,7 @@ const DetailCard = ({ category, elm }) => {
 
 
   );
+
 };
 
 export default DetailCard;
