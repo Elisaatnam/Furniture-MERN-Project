@@ -4,13 +4,13 @@ import BigStuffImg from "../../assets/Img/big_stuff_img.jpeg"
 import NSBSImg from "../../assets/Img/nsbs_stuff_img.jpeg"
 import SmallStuffImg from "../../assets/Img/small_stuff_img.jpeg"
 
-
 const Home = () => {
 	return (
 		<>
 		<header>
 		<Nav />
 			<h1>MY FURNITURE</h1>
+			
 		</header>
 		<main>
 			<div className="home-card">
