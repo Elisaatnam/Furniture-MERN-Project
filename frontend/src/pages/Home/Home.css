@@ -1,7 +1,7 @@
-@font-face {
+/* @font-face {
     font-family: Tektur;
     src: url("../../assets/fonts/Tektur/Tektur-VariableFont_wdth\,wght.ttf");
-}
+} */
 
 
 header{
@@ -38,7 +38,12 @@ h1 {
     margin: 125px auto;
     font-size: 2.3rem;
     font-style: italic;
-    color: rgba(219, 219, 219, 0.548);
+    color: rgba(255, 253, 253, 0.817);
+}
+
+a {
+    text-decoration: none;
+    color: black;
 }
 
 main {
