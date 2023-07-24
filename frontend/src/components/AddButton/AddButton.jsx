@@ -1,6 +1,6 @@
 import "./AddButton.css";
 
-const AddButton = ({ formIsActive, setFormIsActive }) => {
+const AddButton = ({ setFormIsActive }) => {
   const handleFormActive = () => {
     setFormIsActive(true);
   };
