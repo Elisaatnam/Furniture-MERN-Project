@@ -1,24 +1,14 @@
+import { useContext } from "react";
 import "./DetailCard.css";
-import { useContext, useEffect, useState } from "react";
 import axios from "axios";
-import { loadingContext, refreshContext } from "../../context/Context";
+import { refreshContext } from "../../context/Context";
 
-const DetailCard = ({ stuffCategory }) => {
-  const [stuff, setStuff] = useState([]);
+const DetailCard = ({ category, elm }) => {
   const { refresh, setRefresh } = useContext(refreshContext);
-  const { loading, setLoading } = useContext(loadingContext);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const { data } = await axios.get(`/api/${stuffCategory}`);
-      setStuff(data);
-    };
-    fetchData();
-  }, [refresh, loading]);
 
   const handleDelete = async (stuffId) => {
     try {
-      const { data } = await axios.delete(`/api/${stuffCategory}/${stuffId}`);
+      const { data } = await axios.delete(`/api/${category}/${stuffId}`);
     } catch (error) {
       console.log("handleDelete: ", error);
     }
@@ -26,6 +16,7 @@ const DetailCard = ({ stuffCategory }) => {
   };
 
   return (
+
     <>
       {loading ? (
         <div className="loadingwindow">
@@ -51,6 +42,8 @@ const DetailCard = ({ stuffCategory }) => {
       )}
 
     </>
+
+
   );
 };
 

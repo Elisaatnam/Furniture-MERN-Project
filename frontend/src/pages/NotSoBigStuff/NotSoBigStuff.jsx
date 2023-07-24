@@ -1,14 +1,26 @@
 import "./NotSoBigStuff.css";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { loadingContext, refreshContext } from "../../context/Context";
+import axios from "axios";
 import Nav from "../../components/Nav/Nav";
 import AddButton from "../../components/AddButton/AddButton";
 import AddNewItem from "../../components/AddNewItem/AddNewItem";
 import DetailCard from "../../components/DetailCard/DetailCard";
 
 const NotSoBigStuff = () => {
+  const [stuff, setStuff] = useState([]);
   const [formIsActive, setFormIsActive] = useState(false);
+  const { loading, setLoading } = useContext(loadingContext);
+  const { refresh, setRefresh } = useContext(refreshContext);
+  const [category, setCategory] = useState("notsobigstuff");
 
-  const stuffCategory = "notsobigstuff";
+  useEffect(() => {
+    const fetchData = async () => {
+      const { data } = await axios.get(`/api/${category}`);
+      setStuff(data);
+    };
+    fetchData();
+  }, [refresh, loading]);
 
   return (
     <>
@@ -21,9 +33,17 @@ const NotSoBigStuff = () => {
         <AddNewItem
           formIsActive={formIsActive}
           setFormIsActive={setFormIsActive}
-          stuffCategory={stuffCategory}
+          category={category}
         />
-        <DetailCard stuffCategory={stuffCategory} />
+        {loading ? (
+          <div className="loadingwindow">
+            <h1>Loading...</h1>
+          </div>
+        ) : (
+          stuff?.map((elm, index) => {
+            return <DetailCard category={category} elm={elm} key={index} />;
+          })
+        )}
       </main>
     </>
   );
