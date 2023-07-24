@@ -1,15 +1,26 @@
 import "./AddNewItem.css";
 import axios from "axios";
+import { useRef } from "react";
 
-const AddNewItem = ({ formIsActive, setFormIsActive }) => {
+const AddNewItem = ({ formIsActive, setFormIsActive, stuffCategory }) => {
+  const titleRef = useRef();
+  const roomRef = useRef();
+  const contentRef = useRef();
+
   const handleFormActive = () => {
     setFormIsActive(false);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const formData = new FormData(e.target);
-    const res = await axios.post("/api/bigstuff", formData);
+
+    const newPost = {
+      title: titleRef.current.value,
+      room: roomRef.current.value,
+      content: contentRef.current.value,
+    };
+
+    const res = await axios.post(`/api/${stuffCategory}`, newPost);
     console.log(res);
     e.target.reset();
     setFormIsActive(false);
@@ -24,8 +35,8 @@ const AddNewItem = ({ formIsActive, setFormIsActive }) => {
         X
       </button>
       <h2>ADD NEW ITEM</h2>
-      <input type="text" placeholder="TITLE" />
-      <select name="room" id="room">
+      <input type="text" placeholder="TITLE" ref={titleRef} />
+      <select name="room" id="room" ref={roomRef}>
         <option value="" disabled selected hidden>
           ROOM
         </option>
@@ -35,7 +46,7 @@ const AddNewItem = ({ formIsActive, setFormIsActive }) => {
         <option value="kitchen">kitchen</option>
         <option value="bathroom">bathroom</option>
       </select>
-      <input type="text" placeholder="CONTENT" />
+      <input type="text" placeholder="CONTENT" ref={contentRef} />
       <button className="buttonPublish" type="submit">
         Publish
       </button>

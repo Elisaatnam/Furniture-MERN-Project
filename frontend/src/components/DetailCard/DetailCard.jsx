@@ -2,13 +2,13 @@ import "./DetailCard.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-const DetailCard = ({ formIsActive }) => {
+const DetailCard = ({ formIsActive, stuffCategory }) => {
   const [stuff, setStuff] = useState([]);
   const [refresh, setRefresh] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
-      const { data } = await axios.get("/api/bigstuff");
+      const { data } = await axios.get(`/api/${stuffCategory}`);
       setStuff(data);
     };
     fetchData();
