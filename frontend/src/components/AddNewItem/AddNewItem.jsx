@@ -40,11 +40,16 @@ const AddNewItem = ({ formIsActive, setFormIsActive, category }) => {
         <input type="file" placeholder="image" name="image" />
         <input type="text" placeholder="TITLE" name="title" />
         <select name="room" id="room">
-          <option value="living room">living room</option>
-          <option value="bedroom">bedroom</option>
-          <option value="workroom">workroom</option>
-          <option value="kitchen">kitchen</option>
-          <option value="bathroom">bathroom</option>
+
+          <option value="" disabled selected hidden>
+            ROOM
+          </option>
+          <option value="Living Room">Living Room</option>
+          <option value="Bedroom">Bedroom</option>
+          <option value="Workroom">Workroom</option>
+          <option value="Kitchen">Kitchen</option>
+          <option value="Bathroom">Bathroom</option>
+
         </select>
         <input type="text" placeholder="CONTENT" name="content" />
         <button className="buttonPublish" type="submit">

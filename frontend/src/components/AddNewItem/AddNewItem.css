@@ -1,3 +1,13 @@
+form {
+  display: flex;
+  flex-direction: column;
+  width: 50vw;
+}
+
+#room{
+  margin: 25px auto;
+}
+
 .formular-nonactive {
   display: none;
 }
@@ -7,26 +17,29 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
   gap: 1rem;
   z-index: 10;
   border: 1px solid black;
-  width: 50vw;
-  margin: 0 auto;
+  width: 40vw;
+  margin: 25px auto;
 }
 
 .buttonClose {
   border: none;
-  background-color: white;
+  background: none;
   cursor: pointer;
 }
 
 .formular-active input {
   text-align: center;
   height: 2rem;
-  width: 80%;
+  width: 70%;
+  margin: 10px auto;
 }
 
 .buttonPublish {
   border: 1px solid black;
   border-radius: 10px;
+  margin: 15px auto;
 }

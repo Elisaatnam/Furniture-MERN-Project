@@ -1,8 +1,4 @@
 @font-face {
     font-family: "Tektur";
-    src: local("../../assets/fonts/Tektur/Tektur-VariableFont_wdth\,wght.ttf");
-  }
-
-  html{
-    font-family: "Tektur", sans-serif;
-  }
+    src: local("Tektur"), url(./assets/fonts/Tektur/Tektur-VariableFont_wdth\,wght.ttf) format("truetype");
+}
