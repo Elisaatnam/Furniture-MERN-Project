@@ -1,6 +1,21 @@
+.pages{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
 .notSoBigStuff{
     padding: 3rem 1rem;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(1, 1fr);
     gap: 2rem;
 }
+
+.loadingwindow {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  

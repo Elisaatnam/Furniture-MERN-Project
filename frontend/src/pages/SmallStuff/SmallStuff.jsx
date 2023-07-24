@@ -28,7 +28,7 @@ const SmallStuff = () => {
   return (
     <>
       <Nav />
-      <main className="wrapper">
+      <main className="pages">
         <AddButton
           formIsActive={formIsActive}
           setFormIsActive={setFormIsActive}

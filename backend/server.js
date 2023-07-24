@@ -92,6 +92,42 @@ app.get("/api/smallstuff/:id", async (req, res) => {
   }
 });
 
+//- BigStuff by Id
+app.get("/api/bigstuff/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const item = await BigStuff.find({ _id: id });
+    console.log(item);
+    res.send(item);
+  } catch (err) {
+    console.error(err);
+  }
+});
+
+//- NotSoBigStuff by Id
+app.get("/api/notsobigstuff/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const item = await NotSoBigStuff.find({ _id: id });
+    console.log(item);
+    res.send(item);
+  } catch (err) {
+    console.error(err);
+  }
+});
+
+//- SmallStuff by Id
+app.get("/api/smallstuff/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const item = await SmallStuff.find({ _id: id });
+    console.log(item);
+    res.send(item);
+  } catch (err) {
+    console.error(err);
+  }
+});
+
 //! ------------ POST ROUTES ------------------------
 //- BigStuff hinzufuegen
 app.post("/api/bigstuff", upload.single("image"), async (req, res) => {
