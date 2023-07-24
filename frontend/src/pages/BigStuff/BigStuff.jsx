@@ -1,9 +1,9 @@
 import "./BigStuff.css";
+import { useState } from "react";
 import Nav from "../../components/Nav/Nav";
 import AddButton from "../../components/AddButton/AddButton";
-import DetailCard from "../../components/DetailCard/DetailCard";
 import AddNewItem from "../../components/AddNewItem/AddNewItem";
-import { useState } from "react";
+import DetailCard from "../../components/DetailCard/DetailCard";
 
 const BigStuff = () => {
   const [formIsActive, setFormIsActive] = useState(false);
@@ -13,7 +13,7 @@ const BigStuff = () => {
   return (
     <>
       <Nav />
-      <main className="bigStuff">
+      <main>
         <AddButton
           formIsActive={formIsActive}
           setFormIsActive={setFormIsActive}

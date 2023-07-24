@@ -1,11 +1,12 @@
 import "./DetailCard.css";
 import { useContext, useEffect, useState } from "react";
 import axios from "axios";
-import { refreshContext } from "../../context/Context";
+import { loadingContext, refreshContext } from "../../context/Context";
 
 const DetailCard = ({ stuffCategory }) => {
   const [stuff, setStuff] = useState([]);
   const { refresh, setRefresh } = useContext(refreshContext);
+  const { loading, setLoading } = useContext(loadingContext);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -13,7 +14,7 @@ const DetailCard = ({ stuffCategory }) => {
       setStuff(data);
     };
     fetchData();
-  }, [refresh]);
+  }, [refresh, loading]);
 
   const handleDelete = async (stuffId) => {
     try {
@@ -26,22 +27,28 @@ const DetailCard = ({ stuffCategory }) => {
 
   return (
     <>
-      {stuff.map((elm, index) => {
-        return (
-          <div className="detailCard" key={index}>
-            <img src={elm.image.url} alt={elm.title} />
-            <div className="content">
-              <h2>{elm.title}</h2>
-              <h3>{elm.room}</h3>
-              <p>{elm.content}</p>
+      {loading ? (
+        <div className="loadingwindow">
+          <h1>Loading...</h1>
+        </div>
+      ) : (
+        stuff?.map((elm, index) => {
+          return (
+            <div className="detailCard" key={index}>
+              <img src={elm.image.url} alt={elm.title} />
+              <div className="content">
+                <h2>{elm.title}</h2>
+                <h3>{elm.room}</h3>
+                <p>{elm.content}</p>
+              </div>
+              <div className="buttons">
+                <button onClick={() => handleDelete(elm._id)}>Delete</button>
+                <button>To Page</button>
+              </div>
             </div>
-            <div className="buttons">
-              <button onClick={() => handleDelete(elm._id)}>Delete</button>
-              <button>To Page</button>
-            </div>
-          </div>
-        );
-      })}
+          );
+        })
+      )}
     </>
   );
 };
