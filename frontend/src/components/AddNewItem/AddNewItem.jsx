@@ -3,7 +3,7 @@ import axios from "axios";
 import { useContext } from "react";
 import { refreshContext, loadingContext } from "../../context/Context";
 
-const AddNewItem = ({ formIsActive, setFormIsActive, stuffCategory }) => {
+const AddNewItem = ({ formIsActive, setFormIsActive, category }) => {
   const { refresh, setRefresh } = useContext(refreshContext);
   const { loading, setLoading } = useContext(loadingContext);
 
@@ -16,7 +16,7 @@ const AddNewItem = ({ formIsActive, setFormIsActive, stuffCategory }) => {
     setFormIsActive(false);
     handleLoading();
     const formData = new FormData(e.target);
-    const res = await axios.post(`/api/${stuffCategory}`, formData);
+    const res = await axios.post(`/api/${category}`, formData);
     e.target.reset();
     setRefresh((prev) => !prev);
   };
@@ -40,9 +40,6 @@ const AddNewItem = ({ formIsActive, setFormIsActive, stuffCategory }) => {
         <input type="file" placeholder="image" name="image" />
         <input type="text" placeholder="TITLE" name="title" />
         <select name="room" id="room">
-          <option value="" disabled selected hidden>
-            ROOM
-          </option>
           <option value="living room">living room</option>
           <option value="bedroom">bedroom</option>
           <option value="workroom">workroom</option>
