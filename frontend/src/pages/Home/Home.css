@@ -1,3 +1,8 @@
+@font-face {
+    font-family: Tektur;
+    src: url("../../assets/fonts/Tektur/Tektur-VariableFont_wdth\,wght.ttf");
+}
+
 header{
     background-image: url("../../assets/Img/living-room.jpeg");
     background-position: center;
@@ -5,14 +10,14 @@ header{
     background-repeat: no-repeat;
     width: 100% ;
     height: 50vh;
-    
 }
 
 nav {
     display: flex;
     justify-content: flex-end;
-    background-color: rgba(0, 255, 255, 0.461);
+    background-color: rgba(213, 213, 213, 0.461);
     padding-right: 2rem;
+    font-family: "Tektur", sans-serif;
 }
 .nav-site {
     padding-left: 2rem;
@@ -30,9 +35,9 @@ h1 {
     display: flex;
     justify-content: center;
     margin: 150px auto;
-    font-size: 3.5rem;
+    font-size: 2.3rem;
     font-style: italic;
-    color: rgba(219, 219, 219, 0.773);
+    color: rgba(219, 219, 219, 0.548);
 }
 
 main {
@@ -42,5 +47,13 @@ main {
 }
 
 .home-card{
-    padding-left: 10rem;
+    margin: 50px auto;
+    text-align: center;
 }
+  
+.home-card img {
+    width: 21vw;
+    height: 38vh;
+}
+    
+
