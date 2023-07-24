@@ -1,11 +1,12 @@
 import "./DetailCard.css";
 import { useContext, useEffect, useState } from "react";
 import axios from "axios";
-import { refreshContext } from "../../context/Context";
+import { loadingContext, refreshContext } from "../../context/Context";
 
 const DetailCard = ({ stuffCategory }) => {
   const [stuff, setStuff] = useState([]);
   const { refresh, setRefresh } = useContext(refreshContext);
+  const { loading, setLoading } = useContext(loadingContext);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -13,7 +14,7 @@ const DetailCard = ({ stuffCategory }) => {
       setStuff(data);
     };
     fetchData();
-  }, [refresh]);
+  }, [refresh, loading]);
 
   const handleDelete = async (stuffId) => {
     try {
@@ -26,15 +27,20 @@ const DetailCard = ({ stuffCategory }) => {
 
   return (
     <>
-      {stuff.map((elm, index) => {
-        return (
-          <div className="detailCard" key={index}>
-            <img src={elm.image.url} alt={elm.title} />
-            <div className="content">
-              <h2>{elm.title}</h2>
-              <h3>{elm.room}</h3>
-              <p>{elm.content}</p>
-            </div>
+      {loading ? (
+        <div className="loadingwindow">
+          <h1>Loading...</h1>
+        </div>
+      ) : (
+        stuff?.map((elm, index) => {
+          return (
+            <div className="detailCard" key={index}>
+              <img src={elm.image.url} alt={elm.title} />
+              <div className="content">
+                <h2>{elm.title}</h2>
+                <h3>{elm.room}</h3>
+                <p>{elm.content}</p>
+              </div>
             <div className="buttons">
               <button className="delete-button" onClick={() => handleDelete(elm._id)}>X</button>
               <button className="detail-button">Details</button>
@@ -42,6 +48,11 @@ const DetailCard = ({ stuffCategory }) => {
           </div>
         );
       })}
+
+          );
+        })
+      )}
+
     </>
   );
 };
