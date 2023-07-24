@@ -12,12 +12,15 @@ const SmallStuff = () => {
   const [formIsActive, setFormIsActive] = useState(false);
   const { loading, setLoading } = useContext(loadingContext);
   const { refresh, setRefresh } = useContext(refreshContext);
-  const [category, setCategory] = useState("smallstuff");
 
   useEffect(() => {
     const fetchData = async () => {
-      const { data } = await axios.get(`/api/${category}`);
-      setStuff(data);
+      try {
+        const { data } = await axios.get(`/api/smallstuff`);
+        setStuff(data);
+      } catch (error) {
+        console.log("fetchData: ", error);
+      }
     };
     fetchData();
   }, [refresh, loading]);
@@ -25,7 +28,7 @@ const SmallStuff = () => {
   return (
     <>
       <Nav />
-      <main>
+      <main className="wrapper">
         <AddButton
           formIsActive={formIsActive}
           setFormIsActive={setFormIsActive}
@@ -33,7 +36,7 @@ const SmallStuff = () => {
         <AddNewItem
           formIsActive={formIsActive}
           setFormIsActive={setFormIsActive}
-          category={category}
+          category={"smallstuff"}
         />
         {loading ? (
           <div className="loadingwindow">
@@ -41,7 +44,7 @@ const SmallStuff = () => {
           </div>
         ) : (
           stuff?.map((elm, index) => {
-            return <DetailCard category={category} elm={elm} key={index} />;
+            return <DetailCard category={"smallstuff"} elm={elm} key={index} />;
           })
         )}
       </main>

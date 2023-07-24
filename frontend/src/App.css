@@ -1,1 +1,12 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
 
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  padding: 3rem 2rem;
+  gap: 2rem;
+}

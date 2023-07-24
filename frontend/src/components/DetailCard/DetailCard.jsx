@@ -1,9 +1,10 @@
-import { useContext } from "react";
 import "./DetailCard.css";
 import axios from "axios";
+import { useContext } from "react";
 import { refreshContext } from "../../context/Context";
+import { Link } from "react-router-dom";
 
-const DetailCard = ({ category, elm }) => {
+const DetailCard = ({ elm, category }) => {
   const { refresh, setRefresh } = useContext(refreshContext);
 
   const handleDelete = async (stuffId) => {
@@ -25,7 +26,7 @@ const DetailCard = ({ category, elm }) => {
       </div>
       <div className="buttons">
         <button onClick={() => handleDelete(elm._id)}>Delete</button>
-        <button>To Page</button>
+        <Link to={`/${category}/${elm._id}`}>Details</Link>
       </div>
     </div>
   );

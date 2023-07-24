@@ -12,12 +12,15 @@ const NotSoBigStuff = () => {
   const [formIsActive, setFormIsActive] = useState(false);
   const { loading, setLoading } = useContext(loadingContext);
   const { refresh, setRefresh } = useContext(refreshContext);
-  const [category, setCategory] = useState("notsobigstuff");
 
   useEffect(() => {
     const fetchData = async () => {
-      const { data } = await axios.get(`/api/${category}`);
-      setStuff(data);
+      try {
+        const { data } = await axios.get(`/api/notsobigstuff`);
+        setStuff(data);
+      } catch (error) {
+        console.log("fetchData: ", error);
+      }
     };
     fetchData();
   }, [refresh, loading]);
@@ -25,7 +28,7 @@ const NotSoBigStuff = () => {
   return (
     <>
       <Nav />
-      <main>
+      <main className="wrapper">
         <AddButton
           formIsActive={formIsActive}
           setFormIsActive={setFormIsActive}
@@ -33,7 +36,7 @@ const NotSoBigStuff = () => {
         <AddNewItem
           formIsActive={formIsActive}
           setFormIsActive={setFormIsActive}
-          category={category}
+          category="notsobigstuff"
         />
         {loading ? (
           <div className="loadingwindow">
@@ -41,7 +44,9 @@ const NotSoBigStuff = () => {
           </div>
         ) : (
           stuff?.map((elm, index) => {
-            return <DetailCard category={category} elm={elm} key={index} />;
+            return (
+              <DetailCard category={"notsobigstuff"} elm={elm} key={index} />
+            );
           })
         )}
       </main>

@@ -8,16 +8,19 @@ import AddNewItem from "../../components/AddNewItem/AddNewItem";
 import DetailCard from "../../components/DetailCard/DetailCard";
 
 const BigStuff = () => {
-  const [stuff, setStuff] = useState([]);
-  const [formIsActive, setFormIsActive] = useState(false);
-  const { loading, setLoading } = useContext(loadingContext);
   const { refresh, setRefresh } = useContext(refreshContext);
-  const [category, setCategory] = useState("bigstuff");
+  const { loading, setLoading } = useContext(loadingContext);
+  const [formIsActive, setFormIsActive] = useState(false);
+  const [stuff, setStuff] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
-      const { data } = await axios.get(`/api/${category}`);
-      setStuff(data);
+      try {
+        const { data } = await axios.get(`/api/bigstuff`);
+        setStuff(data);
+      } catch (error) {
+        console.log("fetchData: ", error);
+      }
     };
     fetchData();
   }, [refresh, loading]);
@@ -25,7 +28,7 @@ const BigStuff = () => {
   return (
     <>
       <Nav />
-      <main>
+      <main className="wrapper">
         <AddButton
           formIsActive={formIsActive}
           setFormIsActive={setFormIsActive}
@@ -33,7 +36,7 @@ const BigStuff = () => {
         <AddNewItem
           formIsActive={formIsActive}
           setFormIsActive={setFormIsActive}
-          category={category}
+          category={"bigstuff"}
         />
         {loading ? (
           <div className="loadingwindow">
@@ -41,7 +44,7 @@ const BigStuff = () => {
           </div>
         ) : (
           stuff?.map((elm, index) => {
-            return <DetailCard category={category} elm={elm} key={index} />;
+            return <DetailCard elm={elm} key={index} category={"bigstuff"} />;
           })
         )}
       </main>
