@@ -8,6 +8,8 @@ import { useState } from "react";
 const BigStuff = () => {
   const [formIsActive, setFormIsActive] = useState(false);
 
+  const stuffCategory = "bigstuff";
+
   return (
     <>
       <Nav />
@@ -19,8 +21,9 @@ const BigStuff = () => {
         <AddNewItem
           formIsActive={formIsActive}
           setFormIsActive={setFormIsActive}
+          stuffCategory={stuffCategory}
         />
-        <DetailCard formIsActive={formIsActive} />
+        <DetailCard stuffCategory={stuffCategory} />
       </main>
     </>
   );
