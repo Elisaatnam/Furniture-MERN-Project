@@ -36,8 +36,8 @@ const DetailCard = ({ stuffCategory }) => {
               <p>{elm.content}</p>
             </div>
             <div className="buttons">
-              <button onClick={() => handleDelete(elm._id)}>Delete</button>
-              <button>To Page</button>
+              <button className="delete-button" onClick={() => handleDelete(elm._id)}>X</button>
+              <button className="detail-button">Details</button>
             </div>
           </div>
         );
