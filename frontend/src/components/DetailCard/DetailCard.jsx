@@ -47,10 +47,7 @@ const DetailCard = ({ stuffCategory }) => {
             </div>
           </div>
         );
-      })}
-
-          );
-        })
+      })
       )}
 
     </>

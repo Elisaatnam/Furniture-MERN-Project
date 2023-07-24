@@ -6,6 +6,7 @@ import Home from "./pages/Home/Home";
 import BigStuff from "./pages/BigStuff/BigStuff";
 import NotSoBigStuff from "./pages/NotSoBigStuff/NotSoBigStuff";
 import SmallStuff from "./pages/SmallStuff/SmallStuff";
+import "../../frontend/src/assets/fonts/Tektur/Tektur-VariableFont_wdth,wght.ttf"
 
 function App() {
   const [refresh, setRefresh] = useState(false);
