@@ -44,9 +44,6 @@ const AddNewItem = ({ formIsActive, setFormIsActive, category }) => {
           className="input-img"
         />
         <select name="room" id="room">
-          <option value="" disabled selected hidden>
-            ROOM
-          </option>
           <option value="Living Room">Living Room</option>
           <option value="Bedroom">Bedroom</option>
           <option value="Workroom">Workroom</option>

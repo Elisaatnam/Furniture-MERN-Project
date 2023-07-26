@@ -27,14 +27,45 @@ app.use(express.json());
 //! ------------ GET ROUTES ------------------------
 //- BigStuff "fetchen"
 app.get("/api/bigstuff", async (req, res) => {
-  try {
-    const allBigStuff = await BigStuff.find();
-    res.send(allBigStuff);
-  } catch (err) {
-    console.error(err);
-    res.send("There was an error fetching the Big Stuff");
+  const { titleSearch, searchRoom, sortBy } = req.query;
+
+  if (titleSearch || searchRoom) {
+    let responseData = await BigStuff.find();
+    // Check for Title
+    if (titleSearch) {
+      responseData = responseData.filter((data) => {
+        return data.title.toLowerCase().includes(titleSearch.toLowerCase());
+      });
+      //sort
+      if (sortBy) {
+        responseData.sort((dataA, dataB) => {
+          return dataA.sortBy.localeCompare(dataB.sortBy);
+        });
+      }
+      // Check for Room
+    } else {
+      responseData = responseData.filter((data) => {
+        return data.room.toLowerCase().includes(searchRoom.toLowerCase());
+      });
+      //sort
+      if (sortBy) {
+        responseData.sort((dataA, dataB) => {
+          return dataA.sortBy.localeCompare(dataB.sortBy);
+        });
+      }
+    }
+    res.json(responseData);
+  } else {
+    try {
+      const allBigStuff = await BigStuff.find();
+      res.send(allBigStuff);
+    } catch (err) {
+      console.error(err);
+      res.send("There was an error fetching the Big Stuff");
+    }
   }
 });
+
 //- NotSoBigStuff "fetchen"
 app.get("/api/notsobigstuff", async (req, res) => {
   try {
