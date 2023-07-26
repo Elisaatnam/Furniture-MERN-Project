@@ -13,6 +13,7 @@ const BigStuff = () => {
   const [formIsActive, setFormIsActive] = useState(false);
   const [stuff, setStuff] = useState([]);
   const [searchForTitle, setSearchForTitle] = useState("");
+  const [searchForRoom, setSearchForRoom] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -24,7 +25,7 @@ const BigStuff = () => {
       }
     };
     fetchData();
-  }, [loading]);
+  }, [loading, refresh]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -40,13 +41,34 @@ const BigStuff = () => {
     fetchData();
   }, [searchForTitle]);
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const { data } = await axios.get(
+          `/api/bigstuff?searchRoom=${searchForRoom}`
+        );
+        setStuff(data);
+      } catch (error) {
+        console.log("fetchData: ", error);
+      }
+    };
+    fetchData();
+  }, [searchForRoom]);
+
   return (
     <>
       <Nav />
+      {/* search for title */}
       <input
         onChange={(e) => setSearchForTitle(e.target.value)}
         type="text"
         placeholder="Search for Title"
+      />
+      {/* search for room */}
+      <input
+        onChange={(e) => setSearchForRoom(e.target.value)}
+        type="text"
+        placeholder="Search for Room"
       />
       <main className="pages">
         <AddButton setFormIsActive={setFormIsActive} />
